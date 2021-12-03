@@ -1,0 +1,58 @@
+Bridge mqtt:broker:Broker [ host="<IP>", port=1883, secure=false, username="<NAME>", password="<PASSWORD>"] {
+
+	Thing topic Lamp "Best Outlet" @ "Bed Room" {  
+    Channels:
+      Type switch : PowerSwitch1 "Pow1" [ stateTopic="stat/Lamp/POWER1" , commandTopic="cmnd/Lamp/POWER1", on="ON", off="OFF"]
+      Type switch : PowerSwitch2 "Pow2" [ stateTopic="stat/Lamp/POWER2" , commandTopic="cmnd/Lamp/POWER2", on="ON", off="OFF"]
+      Type string : Version [stateTopic="stat/Lamp/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      }
+	
+	Thing topic gray_outlet "Second Outlet" @ "Bed Room" {  
+    Channels:
+      Type switch : PowerSwitch1 "Pow1" [ stateTopic="stat/gray_outlet/POWER1" , commandTopic="cmnd/gray_outlet/POWER1", on="ON", off="OFF"]
+      Type switch : PowerSwitch2 "Pow2" [ stateTopic="stat/gray_outlet/POWER2" , commandTopic="cmnd/gray_outlet/POWER2", on="ON", off="OFF"]
+      Type string : Version [stateTopic="stat/gray_outlet/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      }
+	
+	Thing topic Fan "Ceiling Fan" @ "Bed Room" {  
+    Channels:
+      Type switch : PowerSwitch1 "Pow1" [ stateTopic="stat/Fan/POWER1" , commandTopic="cmnd/Fan/POWER1", on="ON", off="OFF"]
+      Type switch : PowerSwitch2 "Pow2" [ stateTopic="stat/Fan/FanSpeed", on="3", off="0" , commandTopic="cmnd/Fan/FanSpeed", on="3", off="0"]
+      Type string : Version [stateTopic="stat/Fan/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      }
+	  
+	Thing topic Wled "LED" @ "Bed Room" {  
+    Channels:
+      Type dimmer : White "White Light" [ stateTopic="wled/room/api" , commandTopic="wled/room/api", min=0, max=255, formatBeforePublish="W=%s"]
+      Type number : Preset "Preset"     [ stateTopic="wled/room/api" , commandTopic="wled/room/api", formatBeforePublish="PL=%s", min=0, max=16]     
+      }
+	  
+	Thing topic curtains "Bedroom Curtains" @ "Bed Room" {  
+    Channels:
+      Type switch : left_close	[ stateTopic="stat/curtains/POWER3" , commandTopic="cmnd/curtains/POWER3", on="ON", off="OFF"]
+      Type switch : left_open	[ stateTopic="stat/curtains/POWER4" , commandTopic="cmnd/curtains/POWER4", on="ON", off="OFF"]
+      }
+	Thing topic temp "Bedroom Tempurature" @ "Bed Room" {  
+    Channels:
+      Type number : bedroom_temp	[ stateTopic="tele/curtains/SENSOR", transformationPattern="JSONPATH:$.DHT11.Temperature"]
+      }
+	  
+	Thing topic fireplace "Fireplace" @ "Living Room" {  
+    Channels:
+      Type switch : on	"On" [ stateTopic="stat/fireplace/POWER3" , commandTopic="cmnd/fireplace/POWER3", on="ON", off="OFF"]
+      Type switch : off	"Off" [ stateTopic="stat/fireplace/POWER2" , commandTopic="cmnd/fireplace/POWER2", on="ON", off="OFF"]
+      }
+      
+      Thing topic coffee "Coffee" @ "Kitchen" {  
+    Channels:
+      Type switch : coffee_state "Coffee state"	[ stateTopic="stat/coffee/coffeedone", commandTopic="cmnd/coffee/coffeedone", on="ON", off="OFF"]
+      Type switch : coffee_power 		[ stateTopic="stat/coffee/POWER3" , commandTopic="cmnd/coffee/POWER3", on="ON", off="OFF"]
+      Type switch : coffee_steam 		[ stateTopic="stat/coffee/POWER2" , commandTopic="cmnd/coffee/POWER2", on="ON", off="OFF"]
+      }
+}
+
+
+feed:feed:NYTimes  [ URL="https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"]
+
+
+

@@ -1,0 +1,46 @@
+rule "House Music ON"
+when
+	Item Whole_Home_Music changed from OFF to ON
+then
+	Yamaha_Zone1_Power.sendCommand(ON)
+	Yamaha_Zone1_Input.sendCommand("AUDIO2")
+	Yamaha_Zone1_Volume.sendCommand(80)
+
+	
+	Yamaha_Zone2_Power.sendCommand(ON)
+	Yamaha_Zone2_Input.sendCommand("AUDIO2")
+	Yamaha_Zone2_Volume.sendCommand(80)
+
+end
+
+rule "House Music OFF"
+when
+	Item Whole_Home_Music changed from ON to OFF
+then
+	Yamaha_Zone1_Power.sendCommand(OFF)
+	Yamaha_Zone1_Input.sendCommand("HDMI2")
+	Yamaha_Zone1_Volume.sendCommand(20)
+
+
+	Yamaha_Zone2_Power.sendCommand(OFF)
+	Yamaha_Zone2_Input.sendCommand("AUDIO2")
+	Yamaha_Zone2_Volume.sendCommand(20)
+
+end
+
+rule "Switch ON"
+when
+	Item Receiver_Nintendo received update ON
+then
+	Yamaha_Zone1_Power.sendCommand(ON)
+	Yamaha_Zone1_Input.sendCommand("HDMI4")
+	Yamaha_Zone1_Volume.sendCommand(30)
+end
+
+//rule "Switch OFF"
+//when
+//	Item Receiver_Nintendo changed from ON to OFF
+//then
+//	Yamaha_Zone1_Power.sendCommand(OFF)
+//	Yamaha_Zone1_Input.sendCommand("HDMI2")
+//end

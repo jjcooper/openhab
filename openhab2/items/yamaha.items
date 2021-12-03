@@ -1,0 +1,32 @@
+Group	y740			"Zone 1"				{alexa="Endpoint.Speaker"}
+Switch	Yamaha_Zone1_Power	"Zone 1 Power [%s]"		(y740)	{channel="yamahareceiver:zone:<UID>:Main_Zone:zone_channels#power", alexa="PowerController.powerState"}
+Dimmer	Yamaha_Zone1_Volume	"Zone 1 Volume [%.1f %%]"	(y740)	{channel="yamahareceiver:zone:<UID>:Main_Zone:zone_channels#volume", alexa="Speaker.volume"}
+Switch	Yamaha_Zone1_Mute	"Zone 1 Mute [%s]"		(y740)	{channel="yamahareceiver:zone:<UID>:Main_Zone:zone_channels#mute", alexa="Speaker.muted"}
+String	Yamaha_Zone1_Input	"Zone 1 Input [%s]"		(y740)	{channel="yamahareceiver:zone:<UID>:Main_Zone:zone_channels#input", alexa="InputController.input" [supportedInputs="HDMI1,HDMI2,HDMI3,HDMI4,HDMI5"]}
+//String	Yamaha_Zone1_Surround	"Zone 1 Surround [%s]"		(y740)	{channel="yamahareceiver:zone:<UID>:Main_Zone:zone_channels#surroundProgram" }
+
+Switch      Yamaha_Zone2_Power		"Zone 2 Power [%s]"	<switch>             { channel="yamahareceiver:zone:<UID>:Zone_2:zone_channels#power" , ga = "Switch", alexa="Switchable"}
+Dimmer      Yamaha_Zone2_Volume		"Zone 2 Volume [%.1f %%]"		<light>        { channel="yamahareceiver:zone:<UID>:Zone_2:zone_channels#volume", ga="Light"  }
+Switch      Yamaha_Zone2_Mute		"Zone 2 Mute [%s]"                 <soundvolume_mute>   { channel="yamahareceiver:zone:<UID>:Zone_2:zone_channels#mute" }
+String      Yamaha_Zone2_Input		"Zone 2 Input [%s]"                <video>              { channel="yamahareceiver:zone:<UID>:Zone_2:zone_channels#input" }
+
+Group   gLivingRoomTV    "Living room TV" <screen>
+Dimmer  TV_Volume        "Volume"         <soundvolume>        (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:volume" }
+Switch  TV_Mute          "Mute"           <soundvolume_mute>   (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:mute" }
+String  TV_SourceName    "Source Name"                         (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:sourceName" }
+String  TV_SourceApp     "Source App"                          (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:sourceApp" }
+String  TV_ProgramTitle  "Program Title"                       (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:programTitle" }
+String  TV_ChannelName   "Channel Name"                        (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:channelName" }
+String  TV_KeyCode       "Key Code"                            (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:keyCode" }
+Switch  TV_Power         "Power"                               (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:power" }
+Switch  TV_ArtMode       "Art Mode"                            (gLivingRoomTV)   { channel="samsungtv:tv:<UID>:artMode" }
+
+
+
+
+
+//Group ya2a			"Home Theater"		{alexa="Endpoint.Speaker"}
+//Switch ya2a_zone1_power		"Power [%s]"   (ya2a)	<switch> 	{http=">[ON:GET:http://<IP>/YamahaExtendedControl/v1/main/setPower?power=on] >[OFF:GET:http://<IP>/YamahaExtendedControl/v1/main/setPower?power=standby]", alexa="PowerController.powerState"}
+//Number ya2a_zone1_volume	"Volume [%.1f %%]"  (ya2a)	<soundvolume> 	{http=">[ON:GET:http://<IP>/YamahaExtendedControl/v1/main/setMute?enable=true] >[OFF:GET:http://<IP>/YamahaExtendedControl/v1/main/setMute?enable=false]", alexa="Speaker.volume"}
+//Switch ya2a_zone1_mute		"Mute [%s]"    (ya2a)	<soundvolume_mute>	{http="<[yamIsx80McRadioStatus:10000:JSONPATH($.volume)]", alexa="Speaker.muted"}
+//String ya2a_zone1_input		"Input [%s]"   (ya2a)	<video> 	{http="<[yamIsx80McRadioStatus:10000:JSONPATH($.input)]", alexa="InputController.input" [supportedInputs="HDMI1,HDMI2"]}

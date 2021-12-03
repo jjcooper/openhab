@@ -1,0 +1,53 @@
+Switch Lamp "Room Lamp"	["Switchable"] { channel="mqtt:topic:Broker:Lamp:PowerSwitch1" }
+Switch Fan "Room Fan"	["Switchable"] { channel="mqtt:topic:Broker:Lamp:PowerSwitch2" }
+
+Switch Ceiling_Light "Ceiling Light" ["Switchable"] { channel="mqtt:topic:Broker:Fan:PowerSwitch1" }
+Switch Ceiling_Fan "Ceiling Fan" ["Switchable"] { channel="mqtt:topic:Broker:Fan:PowerSwitch2" }
+
+Switch Gray1 { channel="mqtt:topic:Broker:gray_outlet:PowerSwitch1"}
+
+Switch Gray2	["Switchable"] { channel="mqtt:topic:Broker:gray_outlet:PowerSwitch2"}
+
+Switch Whole_Home_Music "Whole Home Music"				{alexa="Switchable"}
+Switch Receiver_Nintendo "Nintendo Switch"						{alexa="Switchable"}
+
+
+Switch left_close	{ channel="mqtt:topic:Broker:curtains:left_close" }
+Switch left_open	{ channel="mqtt:topic:Broker:curtains:left_open" }
+Switch Room_Curtains_left "Left Curtains"		{alexa="Switchable"}
+
+Number Bedroom_Temp "Bedroom Temperature [%.1f °F]" <temperature> { channel="mqtt:topic:Broker:temp:bedroom_temp", alexa="CurrentTemperature"}
+Number Day_Period		"Chart Period"
+Number Fine_Day_Period	"Fine Chart Period"
+
+Switch Temp_Alerts "High/Low Temp Alerts"
+Number High_Temp "High Temp"
+Number Low_Temp "Low Temp"
+Number Swing_Temp "Swing Temp"
+Switch UncomfortZone "Uncomfortable Temperature"
+
+Switch fireplace_on	"ON" { channel="mqtt:topic:Broker:fireplace:on" }
+Switch fireplace_off "OFF" { channel="mqtt:topic:Broker:fireplace:off" }
+Switch Fireplace "Fireplace"		{alexa="Switchable"}
+
+
+Group coffee     "Espresso Machine"			{alexa="Endpoint.Fan"}
+Number	coffee_count	"Number of coffees"	(coffee)		{alexa="RangeController.rangeValue" [supportedRange="0:10:1"]}
+Switch	coffee_state	"Coffee state"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_state"}
+Switch	coffee_power	"Coffee Power"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_power", alexa="PowerController.powerState"}
+Switch	coffee_steam	"Coffee Steam"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_steam", alexa="ToggleController.toggleState"}
+
+
+
+String latest_title           {channel="feed:feed:NYTimes:latest-title"}
+String latest_description     {channel="feed:feed:NYTimes:latest-description"}
+DateTime latest_date          {channel="feed:feed:NYTimes:latest-date"}
+Number number_of_entries      {channel="feed:feed:NYTimes:number-of-entries"}
+String description            {channel="feed:feed:NYTimes:description"}
+String author                 {channel="feed:feed:NYTimes:author"}
+DateTime published_date       {channel="feed:feed:NYTimes:last-update"}
+String title                  {channel="feed:feed:NYTimes:title"}
+
+Dimmer Wled_MasterControls "Masterlight" ["Lighting"]	{channel="mqtt:topic:Broker:Wled:White"}
+Number Wled_Preset "Preset"				{channel="mqtt:topic:Broker:Wled:Preset"}
+

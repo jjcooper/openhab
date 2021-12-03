@@ -1,0 +1,56 @@
+	sitemap home label="Home" {
+	
+	Frame label="Fireplace"
+        {
+			Switch item=Fireplace
+        }
+        
+        Frame label="Coffee"
+        {
+        	Switch item=coffee_power
+		Setpoint item=coffee_count		label="number of coffees [%d]"	minValue=0 maxValue=10
+        }
+		
+        Frame label="Bed Room"
+        {
+			Switch item=Lamp
+			Switch item=Fan
+			Switch item=Ceiling_Light
+			Switch item=Ceiling_Fan
+			Switch item=Gray2
+        }
+		
+		Frame label="Bed Room Tempurature"{
+			Text item=Bedroom_Temp label="Bedroom [%.1f °F]" icon="temperature"
+			Switch item=Temp_Alerts
+			Setpoint item=High_Temp		label="High Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
+			Setpoint item=Low_Temp		label="Low Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
+			//Setpoint item=Swing_Temp	label="Swing Temp [%.1f  F]"			minValue=0  maxValue=5  step=0.5
+			//Switch item=UncomfortZone
+
+		}
+
+
+		Frame label="Uncomfortable Temperature" visibility=[UncomfortZone==ON]
+		Frame label="Bed Room Tempurature"{
+
+			Switch item=Fine_Day_Period label="Chart Period" mappings=[0="Hour",1="4Hour", 2="12Hour", 3="Day", 4="2Day"]
+			Chart item=Bedroom_Temp period=h	refresh=10 visibility=[Fine_Day_Period==0]
+			Chart item=Bedroom_Temp period=4h	refresh=10 visibility=[Fine_Day_Period==1]
+			Chart item=Bedroom_Temp period=12h	refresh=10 visibility=[Fine_Day_Period==2]
+			Chart item=Bedroom_Temp period=D	refresh=10 visibility=[Fine_Day_Period==3]
+			Chart item=Bedroom_Temp period=2D	refresh=10 visibility=[Fine_Day_Period==4]
+			
+			Switch item=Day_Period label="Chart Period" mappings=[0="Hour",1="Day", 2="Week", 3="Month", 4="Year"]
+			Chart item=Bedroom_Temp period=4h	refresh=10 visibility=[Day_Period==0]
+			Chart item=Bedroom_Temp period=D	refresh=10 visibility=[Day_Period==1]
+			Chart item=Bedroom_Temp period=W	refresh=10 visibility=[Day_Period==2]
+			Chart item=Bedroom_Temp period=M	refresh=10 visibility=[Day_Period==3]
+			Chart item=Bedroom_Temp period=Y	refresh=10 visibility=[Day_Period==4]
+
+			//Chart item=UncomfortZone period=H
+
+
+		}
+	
+}

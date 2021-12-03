@@ -1,0 +1,26 @@
+rule "Turn on machine"
+when
+	Item coffee_count changed from 0
+then
+	coffee_power.sendCommand(ON)	
+end
+
+rule "decrement count"
+when
+	Item coffee_state changed from OFF to ON
+then
+	if(coffee_count.state > 0)
+	{
+		coffee_count.postUpdate((coffee_count.state) as Number -1)
+	}
+end
+
+rule "Switch to steam on machine"
+when
+	Item coffee_count changed from 1 to 0
+then
+	if(coffee_power.state == ON)
+	{
+		coffee_steam.sendCommand(ON)
+	}
+end

@@ -1,0 +1,23 @@
+Bridge yamahareceiver:yamahaAV:<UID> "Living Room Receiver" [host="<IP>", refreshInterval=20] {
+    Thing zone Main_Zone "Zone 1" @ "Living Room" [zone="Main_Zone", volumeDbMin=-81, volumeDbMax=12]
+    Thing zone Zone_2 "Zone 2" @ "Living Room" [zone="Zone_2", volumeDbMin=-81, volumeDbMax=12]
+
+}
+
+//Bridge yamahareceiver:yamahaAV:theater "Home Theater" [host="<IP>", refreshInterval=20] {
+//    Thing zone theater "Zone 1"	@ "Basement" [zone="Main_Zone", volumeDbMin=-81, volumeDbMax=12]
+//    Thing zone basement "Zone 2" @ "Basement" [zone="Zone_2"]
+//
+//}
+//
+//
+//Thing http:url:theater "Home Theater" [
+//	baseURL="<IP>",
+//	refresh=15] {
+//		Channels:
+//			Type string : power "Power" [ stateTransformation="JSONPATH:$.metadata.data" ]
+//}
+
+
+Thing samsungtv:tv:livingroom [ hostName="<IP>", port=55000, macAddress="<MAC>", refreshInterval=1000 ]
+

@@ -1,0 +1,69 @@
+rule "Open Curtains"
+when
+	Item Room_Curtains_left changed from OFF to ON
+then
+	left_open.sendCommand(ON)
+
+
+end
+
+rule "Close Curtains"
+when
+	Item Room_Curtains_left changed from ON to OFF
+then
+	left_close.sendCommand(ON)
+
+
+end
+
+rule "Fireplace ON"
+when
+	Item Fireplace changed from OFF to ON
+then
+	fireplace_on.sendCommand(ON)
+end
+
+rule "Fireplace OFF"
+when
+	Item Fireplace changed from ON to OFF
+then
+	fireplace_off.sendCommand(ON)
+end
+
+rule "Temperature Alert"
+when
+	Time cron "0 */2 * ? * *"  //every n minutes; 2
+then
+	if (Temp_Alerts.state==ON)
+	{
+		if (UncomfortZone.state==OFF && Bedroom_Temp.state > High_Temp.state)
+		{
+			sendNotification("<EMAIL>", "HOT!\nIt's " + Bedroom_Temp.state.toString() + " in your bedroom")
+			Ceiling_Fan.sendCommand(ON)
+			//Lamp.sendCommand(ON)
+			UncomfortZone.sendCommand(ON)
+
+		}
+		if (UncomfortZone.state==OFF && Bedroom_Temp.state < Low_Temp.state)
+		{
+			sendNotification("<EMAIL>", "Brrr!\nIt's " + Bedroom_Temp.state.toString() + " in your bedroom")
+			Ceiling_Fan.sendCommand(OFF)
+			Lamp.sendCommand(OFF)
+			UncomfortZone.sendCommand(ON)
+
+		}
+		if (Bedroom_Temp.state > Low_Temp.state && Bedroom_Temp.state < High_Temp.state)
+		{
+			UncomfortZone.sendCommand(OFF)
+			//Ceiling_Fan.sendCommand(OFF)			
+		}
+		
+	}
+end
+
+rule "Comfort restored"
+when
+	Item UncomfortZone changed from ON to OFF
+then
+	sendNotification("<EMAIL>", "Comfort Restored. It's " + Bedroom_Temp.state.toString())
+end
