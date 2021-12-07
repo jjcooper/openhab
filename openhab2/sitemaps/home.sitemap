@@ -1,15 +1,7 @@
 	sitemap home label="Home" {
 	
-	Frame label="Fireplace"
-        {
-			Switch item=Fireplace
-        }
         
-        Frame label="Coffee"
-        {
-        	Switch item=coffee_power
-		Setpoint item=coffee_count		label="number of coffees [%d]"	minValue=0 maxValue=10
-        }
+
 		
         Frame label="Bed Room"
         {
@@ -52,5 +44,13 @@
 
 
 		}
-	
+        Frame label="Coffee"
+        {
+        	Switch item=coffee_power
+		Setpoint item=coffee_count		label="number of coffees [%d]"	minValue=0 maxValue=10
+        }
+	Frame label="Fireplace"
+        {
+			Switch item=Fireplace
+        }	
 }
