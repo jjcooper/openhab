@@ -15,6 +15,7 @@
 		Frame label="Bed Room Tempurature"{
 			Text item=Bedroom_Temp label="Bedroom [%.1f °F]" icon="temperature"
 			Switch item=Temp_Alerts
+			Switch item=window_fan_follow visibility=[Temp_Alerts==ON]
 			Setpoint item=High_Temp		label="High Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
 			Setpoint item=Low_Temp		label="Low Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
 			//Setpoint item=Swing_Temp	label="Swing Temp [%.1f  F]"			minValue=0  maxValue=5  step=0.5

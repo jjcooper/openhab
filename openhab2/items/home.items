@@ -21,6 +21,7 @@ Number Day_Period		"Chart Period"
 Number Fine_Day_Period	"Fine Chart Period"
 
 Switch Temp_Alerts "High/Low Temp Alerts"
+Switch window_fan_follow "Big fan alert"
 Number High_Temp "High Temp"
 Number Low_Temp "Low Temp"
 Number Swing_Temp "Swing Temp"

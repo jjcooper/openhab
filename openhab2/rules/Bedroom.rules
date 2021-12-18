@@ -40,16 +40,22 @@ then
 		{
 			sendNotification("<EMAIL>", "HOT!\nIt's " + Bedroom_Temp.state.toString() + " in your bedroom")
 			Ceiling_Fan.sendCommand(ON)
-			//Lamp.sendCommand(ON)
 			UncomfortZone.sendCommand(ON)
+			if (window_fan_follow.state==ON)
+			{
+				Lamp.sendCommand(ON)
+			}
 
 		}
 		if (UncomfortZone.state==OFF && Bedroom_Temp.state < Low_Temp.state)
 		{
 			sendNotification("<EMAIL>", "Brrr!\nIt's " + Bedroom_Temp.state.toString() + " in your bedroom")
 			Ceiling_Fan.sendCommand(OFF)
-			Lamp.sendCommand(OFF)
 			UncomfortZone.sendCommand(ON)
+			if (window_fan_follow.state==ON)
+			{
+				Lamp.sendCommand(OFF)
+			}
 
 		}
 		if (Bedroom_Temp.state > Low_Temp.state && Bedroom_Temp.state < High_Temp.state)
