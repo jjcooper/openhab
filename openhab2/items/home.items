@@ -1,4 +1,4 @@
-Switch Lamp "Room Lamp"	["Switchable"] { channel="mqtt:topic:Broker:Lamp:PowerSwitch1" }
+Switch Lamp "Window Fan"	["Switchable"] { channel="mqtt:topic:Broker:Lamp:PowerSwitch1" }
 Switch Fan "Room Fan"	["Switchable"] { channel="mqtt:topic:Broker:Lamp:PowerSwitch2" }
 
 Switch Ceiling_Light "Ceiling Light" ["Switchable"] { channel="mqtt:topic:Broker:Fan:PowerSwitch1" }
