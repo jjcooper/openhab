@@ -34,6 +34,7 @@ Switch Fireplace "Fireplace"		{alexa="Switchable"}
 
 Group coffee     "Espresso Machine"			{alexa="Endpoint.Fan"}
 Number	coffee_count	"Number of coffees"	(coffee)		{alexa="RangeController.rangeValue" [supportedRange="0:10:1"]}
+Number	coffee_extraction	"Extraction"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_extraction"}
 Switch	coffee_state	"Coffee state"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_state"}
 Switch	coffee_power	"Coffee Power"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_power", alexa="PowerController.powerState"}
 Switch	coffee_steam	"Coffee Steam"	(coffee)	{channel="mqtt:topic:Broker:coffee:coffee_steam", alexa="ToggleController.toggleState"}

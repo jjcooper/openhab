@@ -16,8 +16,8 @@
 			Text item=Bedroom_Temp label="Bedroom [%.1f °F]" icon="temperature"
 			Switch item=Temp_Alerts
 			Switch item=window_fan_follow visibility=[Temp_Alerts==ON]
-			Setpoint item=High_Temp		label="High Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
-			Setpoint item=Low_Temp		label="Low Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5
+			Setpoint item=High_Temp		label="High Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5	visibility=[Temp_Alerts==ON]
+			Setpoint item=Low_Temp		label="Low Temperature Alert [%.1f °F]"	minValue=65 maxValue=75 step=0.5	visibility=[Temp_Alerts==ON]
 			//Setpoint item=Swing_Temp	label="Swing Temp [%.1f  F]"			minValue=0  maxValue=5  step=0.5
 			//Switch item=UncomfortZone
 
@@ -48,7 +48,8 @@
         Frame label="Coffee"
         {
         	Switch item=coffee_power
-		Setpoint item=coffee_count		label="number of coffees [%d]"	minValue=0 maxValue=10
+		Setpoint item=coffee_count		label="Number of Coffees [%d]"	minValue=0 maxValue=10
+		Setpoint item=coffee_extraction		label="Extraction (Kg) [%.2f]"	minValue=0.02 maxValue=0.2 step=0.04
         }
 	Frame label="Fireplace"
         {

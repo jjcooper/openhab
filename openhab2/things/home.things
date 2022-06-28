@@ -46,6 +46,7 @@ Bridge mqtt:broker:Broker [ host="<IP>", port=1883, secure=false, username="<NAM
       Thing topic coffee "Coffee" @ "Kitchen" {  
     Channels:
       Type switch : coffee_state "Coffee state"	[ stateTopic="stat/coffee/coffeedone", commandTopic="cmnd/coffee/coffeedone", on="ON", off="OFF"]
+      Type number : coffee_extraction		[ commandTopic="cmnd/coffee/mem1", min=0.02, max=0.2]
       Type switch : coffee_power 		[ stateTopic="stat/coffee/POWER3" , commandTopic="cmnd/coffee/POWER3", on="ON", off="OFF"]
       Type switch : coffee_steam 		[ stateTopic="stat/coffee/POWER2" , commandTopic="cmnd/coffee/POWER2", on="ON", off="OFF"]
       }
