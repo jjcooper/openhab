@@ -7,8 +7,8 @@
         {
 			Switch item=Lamp
 			Switch item=Fan
-			Switch item=Ceiling_Light
 			Switch item=Ceiling_Fan
+			Switch item=Ceiling_Light
 			Switch item=Gray2
         }
 		
